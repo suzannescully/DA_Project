@@ -41,16 +41,85 @@
 # print(result2)
 # print(result3)
 
-a = [1, 3, 5, 7, 9]
-print(a)
+# LISTS
+# a = [1, 3, 5, 7, 9]
+# print(a)
+#
+# a.append(11)
+# print(a)
+#
+# a.append("thirteen, fifteen")
+# print(a)
+#
+# a.append([2, 4])
+# print(a)
+#
+# print(a[3])
 
-a.append(11)
-print(a)
+# iloc - retrieve a specific value in a row, use index in square brackets
+# want to pull out population just for US or just for China:
+# china = data[data.country == 'China']
+# china --> will show dataframe with only China pop
+# plt.plot(china.year, china.population)
+# plt.show() --> plots year on x axis and pop on y axis for china
 
-a.append("thirteen, fifteen")
-print(a)
+# show both on a graph:
+# plt.plot(china.year, china.population)
+# plt.plot(us.year, us.population)
+# plt.legend(['United States', 'China'])
+# plt.xlabel = ('year)
+# plt.ylabel = ('population')
+# plt.show()
 
-a.append([2, 4])
-print(a)
+import pandas as pd
+Emp_Attrition = pd.read_csv("HR-Employee-Attrition")
 
-print(a[3])
+# Wednesday Daire - import project into Pandas dataframe
+# - sorting, indexing and grouping
+# - replace missing values or dropping duplicates
+# - looping, iterrows
+# - merge dataframes
+# - use functions to create reusable code
+# - numpy
+# - dictionary/lists
+# - Seaborn and Matplotlib
+
+# LOOPING AND ITERROWS
+# import pandas as pd
+# df = pd.read_csv('attrition_data')
+# df
+# convert col to list
+# col2 = [x for x in df[2]]
+# col2
+# another way, adds index and prints out first three cols:
+# for i, row in df.iterrows():
+#     print(i, row[0], row[1], row[2])
+
+#SORTING
+# you want to sort movie title in alphabetical order
+# movies.title.sort_values() ---> will just list titles
+# movies.sort_values('title') ---> will show entire dataframe sorted in ascending order
+
+#INDEXING example
+
+    eggs    milk    bread
+Jan 200     190     205
+Feb 215     210     222
+Mar 221     220     230
+
+# IN: df.eggs['Mar']
+# OUT: 221
+
+# IN: df.loc["Feb", "milk"]
+# OUT: 210
+
+# IN: df.iloc[2, 1]
+# OUT: 220
+
+# GROUPING
+# import pandas as pd
+# orders = pd.read_csv(link to file here)
+# orders.groupby('Order Priority').Sales.sum()  ---> can be min, max, mean
+# Aggregate
+# orders.groupby('Order Priority').Sales.agg(["sum", "mean", "max", "min"])
+# orders.groupby(['Order Priority'], ['Ship Mode']).Sales.agg(["sum", "mean", "max", "min"]) --->will also group them into ship mode
