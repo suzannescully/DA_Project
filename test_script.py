@@ -6,7 +6,7 @@
 #def example1(x, y):
  #   return x + y
 
-#a = example1(5, 10)
+#a = example1(4, 10)
 #print(a)
 
 
@@ -72,9 +72,9 @@
 # plt.show()
 
 import pandas as pd
-Emp_Attrition = pd.read_csv("HR-Employee-Attrition")
+Emp_Attrition = pd.read_csv("Dataset/HR-Employee-Attrition.csv")
 
-# Wednesday Daire - import project into Pandas dataframe
+# Daire - import project into Pandas dataframe
 # - sorting, indexing and grouping
 # - replace missing values or dropping duplicates
 # - looping, iterrows
@@ -102,10 +102,7 @@ Emp_Attrition = pd.read_csv("HR-Employee-Attrition")
 
 #INDEXING example
 
-    eggs    milk    bread
-Jan 200     190     205
-Feb 215     210     222
-Mar 221     220     230
+
 
 # IN: df.eggs['Mar']
 # OUT: 221
@@ -123,3 +120,17 @@ Mar 221     220     230
 # Aggregate
 # orders.groupby('Order Priority').Sales.agg(["sum", "mean", "max", "min"])
 # orders.groupby(['Order Priority'], ['Ship Mode']).Sales.agg(["sum", "mean", "max", "min"]) --->will also group them into ship mode
+
+# DICTIONARIES
+# working with key value pairs
+# student = {'Name': 'Suzanne', 'Age': 24, 'Location': 'Galway'}
+# print(student)
+# print(student['Location'] ----> should print Galway
+# student.update
+# student.pop
+# how many keys in dict - print(len(students))
+# print keys of dict - print(student.keys())
+# print values of dict - print(student.values())
+# for key, value in student.items()
+#          print(key, value)
+# for loop?
