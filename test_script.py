@@ -102,8 +102,6 @@ Emp_Attrition = pd.read_csv("Dataset/HR-Employee-Attrition.csv")
 
 #INDEXING example
 
-
-
 # IN: df.eggs['Mar']
 # OUT: 221
 
