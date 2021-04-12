@@ -16,9 +16,35 @@ print(Emp_Attrition.size)
 print(Emp_Attrition.columns)
 print(Emp_Attrition.columns[0])
 print(Emp_Attrition.head)
+print(Emp_Attrition.info())
 
+# how many employees in each department
+print(Emp_Attrition['Department'].value_counts())
+
+# sort age in ascending order
 Emp_Attrition.sort_values('Age', inplace=True)
 print(Emp_Attrition)
+
+# mean age of employees in each department
+print(Emp_Attrition.groupby('Department')['Age'].mean())
+
+# yes/no for attrition in each department
+print(Emp_Attrition[['Department','Attrition']])
+
+# average job satisfaction bar plot per department
+
+# group by ?
+
+# merge dataframes
+
+#
+
+
+
+
+
+
+
 
 
 
