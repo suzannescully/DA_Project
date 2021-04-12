@@ -12,6 +12,13 @@ Emp_Attrition = pd.read_csv("Dataset/HR-Employee-Attrition.csv")
 # Replace missing values or dropping duplicates. [1]
 # Looping, iterrows [1]
 # Merge dataframes [1]
+# 4) Python
+# • Use functions to create reusable code. [1]
+# • Numpy. [1]
+# • Dictionary or Lists. [1]
+# 5) Visualize
+# • Seaborn, Matplotlib [2]
+
 print(Emp_Attrition.size)
 print(Emp_Attrition.columns)
 print(Emp_Attrition.columns[0])
@@ -35,9 +42,24 @@ print(Emp_Attrition[['Department','Attrition']])
 
 # group by ?
 
-# merge dataframes
+# merge or concat dataframes
 
-#
+# numpy
+array = np.array(Emp_Attrition)
+array_size = array.size
+array_shape = array.shape
+print('size of array -', array_shape)
+
+print('Number of Total Columns -', len(Emp_Attrition))
+
+# grouping
+
+# drop duplicates
+
+# graph to show gender/job role and average hourly rate
+
+
+
 
 
 
