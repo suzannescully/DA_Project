@@ -36,23 +36,38 @@ print(Emp_Attrition)
 print(Emp_Attrition.groupby('Department')['Age'].mean())
 
 # yes/no for attrition in each department
-print(Emp_Attrition[['Department','Attrition']])
+# print(Emp_Attrition[['Department','Attrition']])
+df1 = Emp_Attrition.filter(items=['Department', 'Attrition'])
 
-# average job satisfaction bar plot per department
+sales_att = df1.loc[df1['Department'] == 'Sales'].filter(items=['Attrition'])
+randd_att = df1.loc[df1['Department'] == 'Research & Development'].filter(items=['Attrition'])
+hr_att = df1.loc[df1['Department'] == 'Human Resources'].filter(items=['Attrition'])
+print(hr_att)
 
-# group by ?
+print(sales_att.value_counts())
+print(sales_att.value_counts().values)
+sales_att_vals = sales_att.value_counts().values
 
-# merge or concat dataframes
+print(hr_att.value_counts())
+print(hr_att.value_counts().values)
+hr_att_vals = hr_att.value_counts().values
+
+print(randd_att.value_counts())
+print(randd_att.value_counts().values)
+randd_att_vals = randd_att.value_counts().values
+
+# merge dataframes to create attrition-department matrix
+Dep_Att = pd.DataFrame(data={'No': [hr_att_vals[0], randd_att_vals[0], sales_att_vals[0]], 'Yes': [hr_att_vals[1], randd_att_vals[1], sales_att_vals[1]]}, index=['HR', 'RD', 'Sales'])
+print(Dep_Att)
+
 
 # numpy
-array = np.array(Emp_Attrition)
-array_size = array.size
-array_shape = array.shape
-print('size of array -', array_shape)
-
-print('Number of Total Columns -', len(Emp_Attrition))
-
-# grouping
+# array = np.array(Emp_Attrition)
+# array_size = array.size
+# array_shape = array.shape
+# print('size of array -', array_shape)
+#
+# print('Number of Total Columns -', len(Emp_Attrition))
 
 # drop duplicates
 
