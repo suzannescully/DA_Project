@@ -60,7 +60,7 @@ randd_att_vals = randd_att.value_counts().values
 Dep_Att = pd.DataFrame(data={'No': [hr_att_vals[0], randd_att_vals[0], sales_att_vals[0]], 'Yes': [hr_att_vals[1], randd_att_vals[1], sales_att_vals[1]]}, index=['HR', 'RD', 'Sales'])
 print(Dep_Att)
 
-# create bar chart showing attrition yes/no per department
+# create bar chart showing attrition by  department
 ax = Dep_Att.plot.bar(color=['#e17055', '#81ecec'], rot=0, title='Attrition by Department', xlabel='Department')
 plt.show()
 
@@ -80,17 +80,14 @@ sns.barplot(data=df2, x='YearsInCurrentRole', y='MonthlyIncome')
 plt.show()
 
 # seaborn scatter
-sns.scatterplot(data=Emp_Attrition, x='PercentSalaryHike', y='MonthlyIncome')
+sns.scatterplot(data=Emp_Attrition, x='EmployeeNumber', y='HourlyRate')
 plt.show()
 
-# pie chart to visualise average salary for each role and what % each role takes from total wage bill
-
-
+# create dataframes for male employees and female employees
 males_df = Emp_Attrition.loc[Emp_Attrition['Gender'] == 'Male']
 females_df = Emp_Attrition.loc[Emp_Attrition['Gender'] == 'Female']
 
-
-fig, axs = plt.subplots(ncols=2, nrows=2)
+# create graphs comparing gender monthly income for each job role and years in current role
 axs[0][0].set_title('Males')
 axs[0][1].set_title('Females')
 axs[1][0].set_title('Males')
@@ -105,17 +102,6 @@ plt.show()
 
 
 
-# numpy
-# array = np.array(Emp_Attrition)
-# array_size = array.size
-# array_shape = array.shape
-# print('size of array -', array_shape)
-#
-# print('Number of Total Columns -', len(Emp_Attrition))
-
-# drop duplicates
-
-# graph to show gender/job role and average hourly rate
 
 
 
