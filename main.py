@@ -8,16 +8,16 @@ import numpy as np
 Emp_Attrition = pd.read_csv("Dataset/HR-Employee-Attrition.csv")
 
 # 3. Analyse Dataset
-# Your project should include sorting, indexing, grouping. [1]
+# Your project should include sorting, indexing, grouping. [1] done
 # Replace missing values or dropping duplicates. [1]
 # Looping, iterrows [1]
-# Merge dataframes [1]
+# Merge dataframes [1] done
 # 4) Python
 # • Use functions to create reusable code. [1]
 # • Numpy. [1]
-# • Dictionary or Lists. [1]
+# • Dictionary or Lists. [1] done
 # 5) Visualize
-# • Seaborn, Matplotlib [2]
+# • Seaborn, Matplotlib [2] bar chart with matplotlib done, scatter plot with seaborn
 
 print(Emp_Attrition.size)
 print(Emp_Attrition.columns)
@@ -60,6 +60,18 @@ randd_att_vals = randd_att.value_counts().values
 Dep_Att = pd.DataFrame(data={'No': [hr_att_vals[0], randd_att_vals[0], sales_att_vals[0]], 'Yes': [hr_att_vals[1], randd_att_vals[1], sales_att_vals[1]]}, index=['HR', 'RD', 'Sales'])
 print(Dep_Att)
 
+# create bar chart showing attrition yes/no per department
+ax = Dep_Att.plot.bar(color=['#e17055', '#81ecec'], rot=0, title='Attrition by Department', xlabel='Department')
+plt.show()
+
+
+# scatter plot age and monthly rate
+# first take the original dataframe and filter for age and monthly rate columns
+# then plot
+df2 = Emp_Attrition.filter(items=['Age', 'MonthlyRate'])
+print(df2)
+sns.scatterplot(data=df2, x='Age', y='MonthlyRate')
+plt.show()
 
 # numpy
 # array = np.array(Emp_Attrition)
