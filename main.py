@@ -68,10 +68,42 @@ plt.show()
 # scatter plot age and monthly rate
 # first take the original dataframe and filter for age and monthly rate columns
 # then plot
-df2 = Emp_Attrition.filter(items=['Age', 'MonthlyRate'])
+df2 = Emp_Attrition.filter(items=['YearsInCurrentRole', 'MonthlyIncome'])
 print(df2)
-sns.scatterplot(data=df2, x='Age', y='MonthlyRate')
+
+# plot mean monthly rate per job role
+#sns.scatterplot(data=df2, x='YearsInCurrentRole', y='MonthlyIncome')
 plt.show()
+
+# seaborn barplot
+sns.barplot(data=df2, x='YearsInCurrentRole', y='MonthlyIncome')
+plt.show()
+
+# seaborn scatter
+sns.scatterplot(data=Emp_Attrition, x='PercentSalaryHike', y='MonthlyIncome')
+plt.show()
+
+# pie chart to visualise average salary for each role and what % each role takes from total wage bill
+
+
+males_df = Emp_Attrition.loc[Emp_Attrition['Gender'] == 'Male']
+females_df = Emp_Attrition.loc[Emp_Attrition['Gender'] == 'Female']
+
+
+fig, axs = plt.subplots(ncols=2, nrows=2)
+axs[0][0].set_title('Males')
+axs[0][1].set_title('Females')
+axs[1][0].set_title('Males')
+axs[1][1].set_title('Females')
+axs[1][0].tick_params('x', labelrotation=90)
+axs[1][1].tick_params('x', labelrotation=90)
+sns.barplot(x='YearsInCurrentRole', y='MonthlyIncome', data=males_df, ax=axs[0][0])
+sns.barplot(x='YearsInCurrentRole', y='MonthlyIncome', data=females_df, ax=axs[0][1])
+sns.barplot(x='JobRole', y='MonthlyIncome', data=males_df.sort_values('JobRole'), ax=axs[1][0])
+sns.barplot(x='JobRole', y='MonthlyIncome', data=females_df.sort_values('JobRole'), ax=axs[1][1])
+plt.show()
+
+
 
 # numpy
 # array = np.array(Emp_Attrition)
