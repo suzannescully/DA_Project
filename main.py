@@ -76,7 +76,7 @@ ax = Dep_Att.plot.bar(color=['#e17055', '#81ecec'], rot=0, title='Attrition by D
 plt.show()
 
 # TAKE ORIGINAL DATAFRAME AND FILTER FOR AGE AND MONTHLY INCOME COLUMNS
-# THEN PLOT USING SEABORN
+# PLOT USING SEABORN
 df2 = Emp_Attrition.filter(items=['YearsInCurrentRole', 'MonthlyIncome'])
 print(df2)
 
@@ -117,3 +117,17 @@ for year_group in grouped_monthlyincome_yrsinrole:
     mean = np.mean(income_list)  # USING NUMPY TO CALCULATE MEAN MONTHLY INCOME FOR EACH YEAR GROUP
 
     print('YearsInCurrentRole: {} Avg Salary: {}'.format(year, int(mean)))  # PRINT MEAN AS INTEGER
+
+# LOOK AT DEPARTMENT AND JOB SATISFACTION
+age_job_satisfaction = Emp_Attrition.filter(items=['Department', 'JobSatisfaction'])
+print(age_job_satisfaction)
+
+# MEAN JOB SATISFACTION RATING FOR EACH DEPARTMENT
+print(Emp_Attrition.groupby('Department')['JobSatisfaction'].mean())
+
+
+
+
+
+
+
