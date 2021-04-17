@@ -23,16 +23,6 @@ def filter_by_col_vals(df, colName, colVal, remainingCol):
 Emp_Attrition = pd.read_csv("Dataset/HR-Employee-Attrition.csv")
 
 # 3. Analyse Dataset
-# Your project should include sorting, indexing, grouping. [1] done
-# Replace missing values or dropping duplicates. [1]
-# Looping, iterrows [1]
-# Merge dataframes [1] done
-# 4) Python
-# • Use functions to create reusable code. [1] done
-# • Numpy. [1]
-# • Dictionary or Lists. [1] done
-# 5) Visualize
-# • Seaborn, Matplotlib [2] done
 
 print(Emp_Attrition.size)
 print(Emp_Attrition.columns)
@@ -50,13 +40,10 @@ print(Emp_Attrition)
 # mean age of employees in each department
 print(Emp_Attrition.groupby('Department')['Age'].mean())
 
-# yes/no for attrition in each department
-# print(Emp_Attrition[['Department','Attrition']])
+# filtered out yes/no for attrition in each department
 df1 = Emp_Attrition.filter(items=['Department', 'Attrition'])
 
-
-
-
+# using function from line 8 to create reusable code
 sales_att = filter_by_col_vals(df1, 'Department', 'Sales', 'Attrition')
 randd_att = filter_by_col_vals(df1, 'Department', 'Research & Development', 'Attrition')
 hr_att = filter_by_col_vals(df1, 'Department', 'Human Resources', 'Attrition')
@@ -84,7 +71,7 @@ Dep_Att = pd.DataFrame(data={'No': [hr_att_vals[0], randd_att_vals[0], sales_att
                        index=['HR', 'RD', 'Sales'])
 print(Dep_Att)
 
-# create bar chart showing attrition by  department
+# create bar chart showing attrition by department
 ax = Dep_Att.plot.bar(color=['#e17055', '#81ecec'], rot=0, title='Attrition by Department', xlabel='Department')
 #plt.show()
 
@@ -124,12 +111,18 @@ sns.barplot(x='JobRole', y='MonthlyIncome', data=males_df.sort_values('JobRole')
 sns.barplot(x='JobRole', y='MonthlyIncome', data=females_df.sort_values('JobRole'), ax=axs[1][1])
 #plt.show()
 
-# filter dataframe to get monthly income vs years in company
+# filter dataframe to get monthly income vs years in current role
 # group by number of years in the company and calculate mean values
 monthlyincome_yrsinrole = Emp_Attrition.filter(items=['YearsInCurrentRole', 'MonthlyIncome'])
 grouped_monthlyincome_yrsinrole = monthlyincome_yrsinrole.groupby('YearsInCurrentRole')
 
+for year_group in grouped_monthlyincome_yrsinrole:
+    year = year_group[0]
+    ygDF = year_group[1]   # year group dataframe
 
-my_list = [1, 2, 3, 4]
-for el in grouped_monthlyincome_yrsinrole:
-    print(el[0])
+    # calculate the mean values from this group
+    income_list = ygDF.filter(items=['MonthlyIncome'])
+    mean = np.mean(income_list) # using numpy to calculate the mean salary of each year group
+
+    print('YearsInCurrentRole: {} Avg Salary: {}'. format(year, int(mean))) # print mean as integer
+
